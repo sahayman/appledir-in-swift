@@ -25,8 +25,6 @@ struct AppleDir: ParsableCommand {
     @Flag(name:.shortAndLong, help: "Go down from each person, recursively")
     var down = false
     
-    @Flag(name:.shortAndLong, help: "Display data in a table")
-    var table = false
     
     @Flag(name:.shortAndLong, help: "Use indenting to separate levels")
     var indent = false
@@ -51,24 +49,48 @@ struct AppleDir: ParsableCommand {
     var includeContractors = false
     
     @Flag(name:.customShort("B"), help: "do NOT trim leading and trailing blanks")
-    var blanksTrimmed = true
+    var blanksNotTrimmed = false
     
     @Flag(name:.shortAndLong, help:"Verbose output, including LDAP connection debugging")
     var verbose = false
+
+    // Different output formats, grouped together
+    enum OutputFormat: EnumerableFlag {
+        case plain
+        case table
+        case json
+        case vCard
+        case csv
+        static func name(for value: Self) -> NameSpecification {
+            switch value {
+            case .plain:
+                return .long
+            case .vCard:
+                return [.customShort("V"), .long]
+                
+            default:
+                return .shortAndLong
+            }
+        }
+        static func help(for value: Self) -> ArgumentHelp? {
+            switch value {
+            case .plain: return ArgumentHelp(stringLiteral: "One line per user")
+            case .table: return ArgumentHelp(stringLiteral: "Table format output")
+            case .vCard: return ArgumentHelp(stringLiteral: "VCard format output")
+            case .json: return ArgumentHelp(stringLiteral: "JSON format output")
+            case .csv:  return ArgumentHelp(stringLiteral: "CSV format output")
+            default: return nil
+            }
+        }
+    }
     
-    @Flag(name:.shortAndLong, help:"Output in JSON")
-    var json = false
+    @Flag(help:"Output format") var outputFormat: OutputFormat = .plain
 
-    @Flag(name:.customShort("V"), help:"Output in VCard (vcf)")
-    var vCard = false
-
-    @Flag(name:.shortAndLong, help:"Output in CSV")
-    var csv = false
 
     @Flag(name:.shortAndLong, help:"Approximate, rather than exact, name matching (experiment)")
     var approximateMatching = false
 
-    @Flag(name:.customShort("V"), help:"Validate names (experiment)")
+    @Flag(name:.customShort("N"), help:"Validate names (experiment)")
     var validateNames = false
 
     @Flag(name:.shortAndLong, help:"Search by group ID")

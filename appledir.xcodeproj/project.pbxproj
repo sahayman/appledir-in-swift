@@ -11,6 +11,8 @@
 		7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7AF2542A2A675F007D8E40 /* ArgumentParser */; };
 		7D7AF2572A2A7828007D8E40 /* ApplePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */; };
 		7D7AF2592A2A789C007D8E40 /* LDAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2582A2A789C007D8E40 /* LDAP.swift */; };
+		7D7AF2612A2A8631007D8E40 /* LDAPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2602A2A8631007D8E40 /* LDAPConnection.m */; };
+		7D7AF2642A2A8759007D8E40 /* LDAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7AF2632A2A8759007D8E40 /* LDAP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,10 @@
 		7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePerson.swift; sourceTree = "<group>"; };
 		7D7AF2582A2A789C007D8E40 /* LDAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDAP.swift; sourceTree = "<group>"; };
 		7D7AF25D2A2A7C61007D8E40 /* appledir.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = appledir.entitlements; sourceTree = "<group>"; };
+		7D7AF25F2A2A8630007D8E40 /* appledir-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "appledir-Bridging-Header.h"; sourceTree = "<group>"; };
+		7D7AF2602A2A8631007D8E40 /* LDAPConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LDAPConnection.m; sourceTree = "<group>"; };
+		7D7AF2622A2A869D007D8E40 /* LDAPConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LDAPConnection.h; sourceTree = "<group>"; };
+		7D7AF2632A2A8759007D8E40 /* LDAP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LDAP.framework; path = System/Library/Frameworks/LDAP.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */,
+				7D7AF2642A2A8759007D8E40 /* LDAP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +75,10 @@
 				7D7AF25D2A2A7C61007D8E40 /* appledir.entitlements */,
 				7D7AF2472A2A65C4007D8E40 /* AppleDir.swift */,
 				7D7AF2582A2A789C007D8E40 /* LDAP.swift */,
+				7D7AF2602A2A8631007D8E40 /* LDAPConnection.m */,
+				7D7AF2622A2A869D007D8E40 /* LDAPConnection.h */,
 				7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */,
+				7D7AF25F2A2A8630007D8E40 /* appledir-Bridging-Header.h */,
 			);
 			path = appledir;
 			sourceTree = "<group>";
@@ -76,6 +86,7 @@
 		7D7AF25E2A2A7D08007D8E40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D7AF2632A2A8759007D8E40 /* LDAP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,6 +126,7 @@
 				TargetAttributes = {
 					7D7AF2432A2A65C4007D8E40 = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -144,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7AF2612A2A8631007D8E40 /* LDAPConnection.m in Sources */,
 				7D7AF2482A2A65C4007D8E40 /* AppleDir.swift in Sources */,
 				7D7AF2572A2A7828007D8E40 /* ApplePerson.swift in Sources */,
 				7D7AF2592A2A789C007D8E40 /* LDAP.swift in Sources */,
@@ -269,11 +282,14 @@
 		7D7AF24C2A2A65C4007D8E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = appledir/appledir.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG6GA25BQY;
 				ENABLE_HARDENED_RUNTIME = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "appledir/appledir-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -281,11 +297,13 @@
 		7D7AF24D2A2A65C4007D8E40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = appledir/appledir.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG6GA25BQY;
 				ENABLE_HARDENED_RUNTIME = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "appledir/appledir-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

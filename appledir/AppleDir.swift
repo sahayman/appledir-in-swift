@@ -109,7 +109,7 @@ struct AppleDir: ParsableCommand {
         
         // Set up a connection
         
-        LDAP.connect()
+        LDAP.connect(hostname: "lookup.apple.com")
         
         outputHeaders()
         

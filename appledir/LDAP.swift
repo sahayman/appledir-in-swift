@@ -7,9 +7,14 @@
 
 import Foundation
 
+let searchBase = "ou=people, o=apple"
 struct LDAP {
     
-static func connect() {
-        print("LDAP Connection")
+    static func connect(hostname: String) {
+        print("LDAP Connection to \(hostname)")
+        
     }
 }
+
+
+

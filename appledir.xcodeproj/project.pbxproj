@@ -11,7 +11,6 @@
 		7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7AF2542A2A675F007D8E40 /* ArgumentParser */; };
 		7D7AF2572A2A7828007D8E40 /* ApplePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */; };
 		7D7AF2592A2A789C007D8E40 /* LDAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2582A2A789C007D8E40 /* LDAP.swift */; };
-		7D7AF25C2A2A7A60007D8E40 /* SwiftDirector in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +30,7 @@
 		7D7AF2472A2A65C4007D8E40 /* AppleDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDir.swift; sourceTree = "<group>"; };
 		7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePerson.swift; sourceTree = "<group>"; };
 		7D7AF2582A2A789C007D8E40 /* LDAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDAP.swift; sourceTree = "<group>"; };
+		7D7AF25D2A2A7C61007D8E40 /* appledir.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = appledir.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D7AF25C2A2A7A60007D8E40 /* SwiftDirector in Frameworks */,
 				7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +50,7 @@
 			children = (
 				7D7AF2462A2A65C4007D8E40 /* appledir */,
 				7D7AF2452A2A65C4007D8E40 /* Products */,
+				7D7AF25E2A2A7D08007D8E40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,11 +65,19 @@
 		7D7AF2462A2A65C4007D8E40 /* appledir */ = {
 			isa = PBXGroup;
 			children = (
+				7D7AF25D2A2A7C61007D8E40 /* appledir.entitlements */,
 				7D7AF2472A2A65C4007D8E40 /* AppleDir.swift */,
 				7D7AF2582A2A789C007D8E40 /* LDAP.swift */,
 				7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */,
 			);
 			path = appledir;
+			sourceTree = "<group>";
+		};
+		7D7AF25E2A2A7D08007D8E40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,7 +98,6 @@
 			name = appledir;
 			packageProductDependencies = (
 				7D7AF2542A2A675F007D8E40 /* ArgumentParser */,
-				7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */,
 			);
 			productName = appledir;
 			productReference = 7D7AF2442A2A65C4007D8E40 /* appledir */;
@@ -122,7 +129,6 @@
 			mainGroup = 7D7AF23B2A2A65C4007D8E40;
 			packageReferences = (
 				7D7AF2532A2A675F007D8E40 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */,
 			);
 			productRefGroup = 7D7AF2452A2A65C4007D8E40 /* Products */;
 			projectDirPath = "";
@@ -263,9 +269,10 @@
 		7D7AF24C2A2A65C4007D8E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = appledir/appledir.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG6GA25BQY;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -274,9 +281,10 @@
 		7D7AF24D2A2A65C4007D8E40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = appledir/appledir.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WG6GA25BQY;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -314,14 +322,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sersoft-gmbh/SwiftDirector";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.11;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -329,11 +329,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D7AF2532A2A675F007D8E40 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
-		};
-		7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */;
-			productName = SwiftDirector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

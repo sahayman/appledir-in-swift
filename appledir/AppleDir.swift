@@ -107,9 +107,14 @@ struct AppleDir: ParsableCommand {
         print("Output fields: \(outputFields)")
         print("Photo path: \(photoPath ??  "not set")")
         
+        // Set up a connection
+        
+        LDAP.connect()
+        
         outputHeaders()
+        
         for person in  people {
-            directoryOutput(for: person)
+            directoryOutput(for: ApplePerson(name: person))
         }
         outputFooters()
     }
@@ -120,8 +125,8 @@ struct AppleDir: ParsableCommand {
         }
     }
     
-    func directoryOutput(for name: String) {
-        print("Directory: \(name)")
+    func directoryOutput(for person: ApplePerson ) {
+        print("Directory: \(person.name)")
     }
     
     func outputHeaders() {

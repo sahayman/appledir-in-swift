@@ -11,6 +11,7 @@
 		7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7AF2542A2A675F007D8E40 /* ArgumentParser */; };
 		7D7AF2572A2A7828007D8E40 /* ApplePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2562A2A7828007D8E40 /* ApplePerson.swift */; };
 		7D7AF2592A2A789C007D8E40 /* LDAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AF2582A2A789C007D8E40 /* LDAP.swift */; };
+		7D7AF25C2A2A7A60007D8E40 /* SwiftDirector in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7AF25C2A2A7A60007D8E40 /* SwiftDirector in Frameworks */,
 				7D7AF2552A2A675F007D8E40 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +90,7 @@
 			name = appledir;
 			packageProductDependencies = (
 				7D7AF2542A2A675F007D8E40 /* ArgumentParser */,
+				7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */,
 			);
 			productName = appledir;
 			productReference = 7D7AF2442A2A65C4007D8E40 /* appledir */;
@@ -119,6 +122,7 @@
 			mainGroup = 7D7AF23B2A2A65C4007D8E40;
 			packageReferences = (
 				7D7AF2532A2A675F007D8E40 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */,
 			);
 			productRefGroup = 7D7AF2452A2A65C4007D8E40 /* Products */;
 			projectDirPath = "";
@@ -310,6 +314,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sersoft-gmbh/SwiftDirector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.11;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -317,6 +329,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D7AF2532A2A675F007D8E40 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		7D7AF25B2A2A7A60007D8E40 /* SwiftDirector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7AF25A2A2A7A60007D8E40 /* XCRemoteSwiftPackageReference "SwiftDirector" */;
+			productName = SwiftDirector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

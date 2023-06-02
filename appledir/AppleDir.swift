@@ -79,7 +79,6 @@ struct AppleDir: ParsableCommand {
             case .vCard: return ArgumentHelp(stringLiteral: "VCard format output")
             case .json: return ArgumentHelp(stringLiteral: "JSON format output")
             case .csv:  return ArgumentHelp(stringLiteral: "CSV format output")
-            default: return nil
             }
         }
     }
@@ -99,10 +98,59 @@ struct AppleDir: ParsableCommand {
     
     
     mutating func run() throws {
+        
+        // Some options affect others and I'm not sure how to do that properly yet
+        argumentTidyUp()
+        
         print("it's appledir, but in swift!")
         print("People: \(people)")
         print("Output fields: \(outputFields)")
-        print("Photo path: \(photoPath)")
+        print("Photo path: \(photoPath ??  "not set")")
+        
+        outputHeaders()
+        for person in  people {
+            directoryOutput(for: person)
+        }
+        outputFooters()
+    }
+    
+    mutating func argumentTidyUp() {
+        if shortOutput {
+            outputFields = "name,email"
+        }
+    }
+    
+    func directoryOutput(for name: String) {
+        print("Directory: \(name)")
+    }
+    
+    func outputHeaders() {
+        switch outputFormat {
+        case .json:
+            print("[")
+        case .vCard:
+            print("""
+                    BEGIN:VCARD\r
+                    VERSION:3.0\r
+                    PRODID:-//Apple Inc.//Mac OS X 10.15.4//EN\r
+
+                    """
+                  )
+        default:
+            // nothing needed
+            return
+        }
+    }
+    func outputFooters() {
+        switch outputFormat {
+        case .json:
+            print("\n]")
+        case .vCard:
+            print("END: VCARD\r")
+        default:
+            // nothing needed
+            return
+        }
     }
 }
 
